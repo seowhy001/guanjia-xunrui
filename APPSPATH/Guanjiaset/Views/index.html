@@ -1,0 +1,102 @@
+{template "header.html"}
+<style>
+  .tipsTab{
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .tipsContent{
+    display: inline-block;
+  }
+  h4{
+    font-weight: bold;
+  }
+</style>
+<div class="portlet bordered light myfbody">
+
+  <form action="" class="form-horizontal" method="post" name="myform" id="myform">
+    {$form}
+    <div class="portlet-body">
+      <div class="tab-content">
+        <div class="tab-pane {if $page==0}active{/if}" id="tab_0">
+          <div class="form-body">
+            <h4>通讯配置</h4>
+            <div style="padding:0 30px;">
+            <div class="form-group" >
+              <tr>
+                <td width="15%">发布地址:</td>
+                <td width="85%"><input size="36" style="background: #e0e0e0;width: 400px;" type="text" id="homeUrl" name="homeUrl" class="config-input" readonly
+                                       value="{$domain}" disabled />
+
+                </td>
+              </tr>
+            </div>
+
+            <div class="form-group">
+              <tr>
+                <td width="15%">token:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td width="85%"><input size="36" type="text" name="data[guanjia_token]" class="config-input"
+                                       value="{htmlspecialchars($data.guanjia_token)}"/>&nbsp;&nbsp; <button type="button" class="btn btn-sm green" onclick="dr_ajax_submit('{dr_now_url()}', 'myform', '2000')">
+                  {dr_lang('保存')}
+                </button><br>（请注意修改并保管好,到 <a
+                  href="https://guanjia.seowhy.com/" target="_blank">搜外内容管家控制台</a>发布需要用到）
+                </td>
+              </tr>
+            </div>
+
+            <div class="form-group" style="display: none">
+              <tr>
+                <td width="15%">根据标题去重:&nbsp;&nbsp;&nbsp;</td>
+                <td width="85%"><input type="checkbox" name="data[titleUnique]" value="true" {if $data['titleUnique']}checked{/if}
+                  />存在相同标题，则不插入
+                </td>
+              </tr>
+            </div>
+            </div>
+
+            <div class="form-group ">
+              <label class="col-md-2 control-label"></label>
+              <div class="col-md-9">
+
+              </div>
+            </div>
+
+            <div class="info-box">
+              <h4>简介和使用教程</h4>
+              <div style="padding: 0 30px">
+                <div width="100%" class="config-table">
+                  <div>
+                    <div class="tipsTab">搜外内容管家官网:</div>
+                    <div class="tipsContent"><a href="https://guanjia.seowhy.com" target="_blank">guanjia.seowhy.com</a>
+                  </div>
+
+                  <div style="margin: 10px 0;border-top: 1px dashed #e2e2e2;border-bottom: 1px dashed #e2e2e2;padding: 20px 0;">
+                    <div class="tipsTab">平台主要功能特性：</div>
+                    <div class="tipsContent">
+                      <div class="feature">1.不要配置任何采集规则，直接选择文章</div>
+                      <div class="feature">2.在线选择文章进行伪原创之后即可发布</div>
+                      <div class="feature">3.全程操作一分钟即可获得文章</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="tipsTab">客服微信：</div>
+                    <div class="tipsContent"><img src="https://static.seowhy.com/www/didi/static/images/didi-service-weixin-1.jpg" width="150px"/></div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+{template "footer.html"}
