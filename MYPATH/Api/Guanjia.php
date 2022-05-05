@@ -3,8 +3,8 @@
 //搜外内容管家免登陆接口：version 1.0.0
 //支持 XunRuiCMS-V4.5.1
 
-
-$this->_module_init('news');
+$model_hash = $_REQUEST['model_hash']?$_REQUEST['model_hash']:'news';
+$this->_module_init($model_hash);
 if (isset($_SERVER["HTTPS"]) && strtolower($_SERVER["HTTPS"]) == "on") {
   $http = "https://";
 } else {
@@ -156,10 +156,10 @@ if ($_REQUEST['action'] == 'setting') {
     return guanjia_successRsp(array("url" => $docFinalUrl),'发布成功');
 
   } else {
-    return guanjia_failRsp(1007, "insert dr_1_news error", "文章发布错误");
+    return guanjia_failRsp(1007, "insert dr_1_".$model_hash." error", "文章发布错误");
   }
 } else if ($_REQUEST['action'] == 'categoryLists') {
-  $rows = \Phpcmf\Service::M()->table("1_share_category")->select('id,name as title,pid as parent_id')->where('mid', 'news')->getAll();
+  $rows = \Phpcmf\Service::M()->table("1_share_category")->select('id,name as title,pid as parent_id')->where('mid', $model_hash)->getAll();
   foreach ($rows as $k=>&$v){
     $v['id'] = intval($v['id']);
   }
